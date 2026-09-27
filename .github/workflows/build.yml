@@ -11,9 +11,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: android-actions/setup-android@v3
       - name: Build
         run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
           f=$(git ls-files | grep -v '^.github/' | grep -v '^github/' | head -1)
           unzip -o "$f"
           cd StatusSaver
